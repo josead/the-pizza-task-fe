@@ -1,10 +1,12 @@
 import React from "react";
 import "./App.css";
 
+import { Nav } from "./Shared/Nav.component";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
+    <div>
+      <Nav></Nav>
     </div>
   );
 }
