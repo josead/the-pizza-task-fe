@@ -1,6 +1,6 @@
 ## The Creative Design Process
 
-#### DAY 1
+### DAY 1
 
 After I read the task description,
 
@@ -13,8 +13,12 @@ Ok, this is what came up from the sketch session:
 ![Mobile Sketch](docs/images/mobile-sketch.jpg "Mobile")
 ![Desktop Sketch](docs/images/desktop-sketch.jpg "Desktop")
 
+#### Hands to work
 
+### Stack
 
+As per the recomendations, I've choosen the following stack to create the Front End experience:
 
+- React.js (for quick boilerplate create-react-app)
 
-
+### Notes
