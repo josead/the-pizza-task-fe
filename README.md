@@ -21,4 +21,6 @@ As per the recomendations, I've choosen the following stack to create the Front 
 
 - React.js (for quick boilerplate create-react-app)
 
-### Notes
+I've commited some components to get a file architecture in place and their correspondent tests files, all empty of course, but just for now ;)
+
+- Tailwind (https://tailwindcss.com/)
