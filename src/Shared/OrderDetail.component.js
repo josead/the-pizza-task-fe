@@ -23,11 +23,9 @@ export const OrderDetail = () => {
     let totalPrice = 0;
     let currency;
 
-    console.log(cartState);
     Object.keys(cartState).map((pizzaID) => {
-      console.log("pizzaID");
       count += cartState[pizzaID].count;
-      totalPrice += cartState[pizzaID].count * cartState[pizzaID].price;
+      totalPrice += cartState[pizzaID].count * cartState[pizzaID].price.value;
       currency = currency || cartState[pizzaID].price.currency;
     });
 

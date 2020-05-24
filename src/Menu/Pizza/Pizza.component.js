@@ -26,12 +26,10 @@ export const Pizza = ({ pizza }) => {
           <div className="cursor-pointer">
             <Button
               green
-              onClick={() => {
-                dispatch({
-                  type: "addToCart",
-                  payload: pizza,
-                });
-              }}
+              onClick={dispatch.bind(null, {
+                type: "addToCart",
+                payload: pizza,
+              })}
             >
               Add
             </Button>
