@@ -15,9 +15,9 @@ export const Pizza = ({ name, price, desc }) => {
           </p>
         </div>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 flex items-center">
+        <div className="flex-grow"></div>
         <div className="flex">
-          <div className="flex-grow"></div>
           <div className="cursor-pointer">
             <Button green>Add</Button>
           </div>

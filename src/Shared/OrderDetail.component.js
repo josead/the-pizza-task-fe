@@ -14,11 +14,14 @@ export const OrderDetail = () => {
   return (
     <div className="bg-white fixed flex transform md:translate-y-16 bottom-0 md:top-0 w-full h-16 shadow-xs">
       <div className="m-auto w-full max-w-screen-xl flex items-center ">
-        <div className="hidden md:block px-4 text-gray-700">Your Order :</div>
+        <div className="hidden md:block px-4 text-gray-700">
+          <Button>Edit Order</Button>
+        </div>
         <div className="md:hidden px-4 text-gray-700">
           <Button>Edit</Button>
         </div>
-        <div className="hidden sm:block sm:w-1/3 md:w-1/2 md:flex text-gray-700">
+        <span className="mx-2">27 Pizzas:</span>
+        <div className="hidden sm:block sm:w-1/3 md:w-1/3 lg:w-1/2 md:flex text-gray-700">
           <div className="truncate">
             <PizzaPill name="Mozzarella" count={2} />
             <PizzaPill name="Fugazzeta" count={2} />

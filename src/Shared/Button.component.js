@@ -43,7 +43,7 @@ export const Button = ({ children, green, primary, noColor, noBorder }) => {
         noBorder ? "" : "border border-gray-500"
       } ${noColor ? "" : "bg-gray-200"}
         active:bg-gray-600
-        hover:bg-gray-100 hover:border-gray-300 hover:text-gray-700 transition-colors duration-100 ease-out
+        hover:bg-gray-100 hover:border-gray-300 hover:text-gray-700 text-gray-900 transition-colors duration-100 ease-out
       `}
     >
       {children}
