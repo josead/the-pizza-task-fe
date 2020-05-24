@@ -1,9 +1,17 @@
 import React from "react";
 
-export const Button = ({ children, green, primary, noColor, noBorder }) => {
+export const Button = ({
+  children,
+  green,
+  primary,
+  noColor,
+  noBorder,
+  ...rest
+}) => {
   if (green) {
     return (
       <button
+        {...rest}
         className="
         p-2
         px-4
@@ -22,6 +30,7 @@ export const Button = ({ children, green, primary, noColor, noBorder }) => {
   if (primary) {
     return (
       <button
+        {...rest}
         className="
         p-2
         px-4
@@ -39,6 +48,7 @@ export const Button = ({ children, green, primary, noColor, noBorder }) => {
 
   return (
     <button
+      {...rest}
       className={`p-2 px-4 rounded-md ${
         noBorder ? "" : "border border-gray-500"
       } ${noColor ? "" : "bg-gray-200"}

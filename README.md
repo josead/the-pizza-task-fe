@@ -24,3 +24,13 @@ As per the recomendations, I've choosen the following stack to create the Front 
 I've commited some components to get a file architecture in place and their correspondent tests files, all empty of course, but just for now ;)
 
 - Tailwind (https://tailwindcss.com/)
+
+### DAY 2
+
+Took me 1 day to implement the responsive styles of the app.
+
+I'll implement mobile swipe version when I get to a stable version.
+
+Here is the result:
+
+![Desktop App](docs/images/pizza-task-desktop-0.1.png "Desktop App")
