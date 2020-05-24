@@ -6,9 +6,9 @@ import { Button } from "./Button.component";
 
 export const Nav = () => {
   return (
-    <div className="w-full h-16 shadow-xs fixed">
-      <div className="flex w-full h-full">
-        <a href="#" className="h-full flex items-center">
+    <div className="z-10 bg-white w-full h-16 shadow-xs fixed">
+      <div className="flex text-gray-700 w-full h-full max-w-screen-xl m-auto">
+        <a href="#" className="h-full flex items-center sm:pr-4">
           <img id="logo" src={logo} alt="Pizza Task" className="p-4 h-full" />
           <h1 className="text-xl py-4">Pizza Task</h1>
         </a>
@@ -16,13 +16,13 @@ export const Nav = () => {
         <div className="flex items-center">
           <a href="#orders">
             <Button noBorder noColor className="bg-white">
-              Your Orders
+              Quick Order
             </Button>
           </a>
-          <div className="mx-4">
-            <a href="#cart">
+          <div className="mr-2 sm:mx-4">
+            <a href="#cart" title="Your Cart is empty">
               <Button noColor noBorder>
-                <img src={cart} />
+                <img src={cart} alt="Cart Icon" />
               </Button>
             </a>
           </div>
