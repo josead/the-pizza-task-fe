@@ -43,9 +43,8 @@ const PizzaCartProvider = ({ children }) => {
         return state;
       case "removeAllPizzas":
         pizzaID = action.payload && action.payload.id;
-        if (state[pizzaID] && state[pizzaID].count - 1 === 0) {
+        if (state[pizzaID]) {
           delete state[pizzaID];
-          state[pizzaID] = null;
         }
         return state;
       default:

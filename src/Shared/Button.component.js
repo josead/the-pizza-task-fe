@@ -14,7 +14,7 @@ export const Button = ({
     return (
       <button
         {...rest}
-        className={`${commonClasses}
+        className={`${commonClasses} ${rest.className}
         bg-green-700
         text-white
         hover:bg-green-500
@@ -30,7 +30,7 @@ export const Button = ({
     return (
       <button
         {...rest}
-        className={`${commonClasses}
+        className={`${commonClasses} ${rest.className}
         bg-red-700
         text-white
         hover:bg-red-500
@@ -45,7 +45,7 @@ export const Button = ({
   return (
     <button
       {...rest}
-      className={`${commonClasses} ${
+      className={`${commonClasses} ${rest.className} ${
         noBorder ? "" : "border border-gray-500"
       } ${noColor ? "" : "bg-gray-200"}
         active:bg-gray-600

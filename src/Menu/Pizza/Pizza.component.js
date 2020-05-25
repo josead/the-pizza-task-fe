@@ -13,7 +13,7 @@ export const Pizza = ({ pizza, countCart }) => {
       <div className="rounded-full flex-initial bg-orange-300 w-32 h-32 mr-8 "></div>
       <div className="items-center flex flex-1">
         <div>
-          <p className="text-xl font-light italic">{pizza.name}</p>
+          <p className="text-xl font-light">{pizza.name}</p>
           <p className="text-2xl font-light">
             <Price {...pizza.price} />
           </p>

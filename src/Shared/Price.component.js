@@ -6,10 +6,10 @@ const currencies = {
 };
 
 export const Price = ({ value, currency }) => {
+  if (!currency || !value) return <span>€ ?</span>;
   return (
     <span>
-      {currencies[currency]}
-      {value}
+      {currencies[currency]} {value}
     </span>
   );
 };
