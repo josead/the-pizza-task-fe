@@ -1,5 +1,7 @@
 import React from "react";
 
+const commonClasses = "whitespace-no-wrap p-2 px-4 rounded-md ";
+
 export const Button = ({
   children,
   green,
@@ -12,15 +14,12 @@ export const Button = ({
     return (
       <button
         {...rest}
-        className="
-        p-2
-        px-4
-        rounded-md
+        className={`${commonClasses}
         bg-green-700
         text-white
         hover:bg-green-500
         hover:border-green-300
-        transition-colors duration-100 ease-out"
+        transition-colors duration-100 ease-out`}
       >
         {children}
       </button>
@@ -31,15 +30,12 @@ export const Button = ({
     return (
       <button
         {...rest}
-        className="
-        p-2
-        px-4
-        rounded-md
+        className={`${commonClasses}
         bg-red-700
         text-white
         hover:bg-red-500
         hover:border-red-300
-        transition-colors duration-100 ease-out"
+        transition-colors duration-100 ease-out`}
       >
         {children}
       </button>
@@ -49,7 +45,7 @@ export const Button = ({
   return (
     <button
       {...rest}
-      className={`p-2 px-4 rounded-md ${
+      className={`${commonClasses} ${
         noBorder ? "" : "border border-gray-500"
       } ${noColor ? "" : "bg-gray-200"}
         active:bg-gray-600

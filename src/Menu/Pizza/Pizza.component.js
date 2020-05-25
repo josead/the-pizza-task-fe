@@ -2,9 +2,9 @@ import React from "react";
 
 import { Button } from "../../Shared/Button.component";
 import { Price } from "../../Shared/Price.component";
-import { usePizzaCartProviderDispatch } from "../../Cart.context";
+import { usePizzaCartProviderDispatch } from "../../Shared/Cart.context";
 
-export const Pizza = ({ pizza }) => {
+export const Pizza = ({ pizza, countCart }) => {
   const dispatch = usePizzaCartProviderDispatch();
 
   if (!pizza) throw Error("Pizza needs pizza prop.");
@@ -22,10 +22,25 @@ export const Pizza = ({ pizza }) => {
       </div>
       <div className="flex-1 flex items-center">
         <div className="flex-grow"></div>
-        <div className="flex">
+        <div className={`${countCart >= 1 ? "block" : "hidden"}`}>
+          <Button
+            onClick={dispatch.bind(null, {
+              type: "removeOnePizza",
+              payload: pizza,
+            })}
+            title={`Remove 1 ${pizza.name}`}
+          >
+            -
+          </Button>
+          <div className="whitespace-no-wrap p-2 px-4 rounded-md inline">
+            {countCart}
+          </div>
+        </div>
+        <div className="">
           <div className="cursor-pointer">
             <Button
               green
+              title={`Add 1 ${pizza.name}, price ${pizza.price.value}`}
               onClick={dispatch.bind(null, {
                 type: "addToCart",
                 payload: pizza,

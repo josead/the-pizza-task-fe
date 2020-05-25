@@ -34,3 +34,5 @@ I'll implement mobile swipe version when I get to a stable version.
 Here is the result:
 
 ![Desktop App](docs/images/pizza-task-desktop-0.1.png "Desktop App")
+
+After a little tweaking I've decided to stick to the sketchs, will add the (-) button to the side of the (Add) to remove one pizza at the time.
