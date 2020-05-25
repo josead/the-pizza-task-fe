@@ -6,7 +6,7 @@ export const Menu = ({ pizzas }) => {
   const cartState = usePizzaCartProviderState();
 
   return (
-    <div className="pb-16">
+    <section className="pb-16">
       {pizzas.map((p) => (
         <Pizza
           pizza={p}
@@ -14,6 +14,6 @@ export const Menu = ({ pizzas }) => {
           countCart={cartState[p.id] && cartState[p.id].count}
         />
       ))}
-    </div>
+    </section>
   );
 };

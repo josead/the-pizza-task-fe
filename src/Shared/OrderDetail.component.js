@@ -60,7 +60,7 @@ export const OrderDetail = () => {
               <span className="block sm:hidden">R</span>
             </Button>
           </div>
-          <div className="block w-1/3 sm:w-1/3 md:w-1/3 lg:w-1/2 text-center text-gray-700">
+          <div className="hidden sm:block w-1/3 sm:w-1/3 md:w-1/3 lg:w-1/2 text-center text-gray-700">
             <div className="truncate mx-4">
               {Object.keys(cartState).map((p, i) => {
                 return (
@@ -74,7 +74,7 @@ export const OrderDetail = () => {
           </div>
           <div className="flex-grow"></div>
           <div className="pr-4 text-xl text-gray-700 whitespace-no-wrap">
-            Subtotal:{" "}
+            <span className="text-sm md:text-base">Subtotal: </span>
             <span className="text-gray-800">
               <Price {...cartSubtotalPrice} />
             </span>

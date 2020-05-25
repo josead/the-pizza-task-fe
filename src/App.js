@@ -5,12 +5,12 @@ import "./App.css";
 import { Nav } from "./Shared/Nav.component";
 import { OrderDetail } from "./Shared/OrderDetail.component";
 import { MenuPage } from "./Menu/MenuPage.component";
+import { CartPage } from "./Cart/CartPage.component";
 
 import { PizzaCartProvider } from "./Cart/Cart.context";
 
 // import { menuService } from "./Menu/Menu.service";
 import { menuService } from "./Menu/Menu.service.mock";
-import { CartPage } from "./Cart/CartPage.component";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             <CartPage />
           </Route>
           <Route path="/">
-            <MenuPage menuService={menuService} />
+            <MenuPage service={menuService} />
           </Route>
         </Switch>
       </Router>

@@ -6,7 +6,9 @@ import { Cart } from "./Cart.component";
 export const CartPage = () => {
   return (
     <Page>
-      <Cart></Cart>
+      <div className="py-8">
+        <Cart></Cart>
+      </div>
     </Page>
   );
 };

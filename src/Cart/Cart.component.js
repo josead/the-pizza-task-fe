@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Empty } from "../Shared/Empty.component";
 import {
   usePizzaCartProviderState,
   usePizzaCartProviderDispatch,
 } from "./Cart.context";
+import { Price } from "../Shared/Price.component";
 
-export const Cart = () => {
+const CartItem = ({ price, count, id, name, desc }) => {
+  return (
+    <div>
+      <Price {...price} /> {count}, {id}, {name}, {desc}
+    </div>
+  );
+};
+
+export const Cart = ({ service }) => {
   const cartState = usePizzaCartProviderState();
   const dispatch = usePizzaCartProviderDispatch();
 
-  const [total, setTotal] = useState(0);
-  const [subTotal, setSubtotal] = useState(0);
+  const [itemsCount, setItemsCount] = useState(0);
 
   useEffect(() => {
     let count = 0;
@@ -18,10 +26,22 @@ export const Cart = () => {
       count += cartState[pizzaID].count;
       return null;
     });
-    setItemsInCart(count);
+    setItemsCount(count);
   }, [cartState]);
 
   if (!Object.keys(cartState).length) return <Empty>Nothing in Cart yet</Empty>;
 
-  return <div>{Object.keys(cartState).map}</div>;
+  return (
+    <div className="">
+      <div className="flex flex-grow">
+        <div className="">
+          <h2>Cart ()</h2>
+        </div>
+      </div>
+      {Object.keys(cartState).map((id, i) => {
+        return <CartItem {...cartState[id]} key={id + i} dispatch={dispatch} />;
+      })}
+      <div>Pizzas to deliver: {itemsCount}</div>
+    </div>
+  );
 };

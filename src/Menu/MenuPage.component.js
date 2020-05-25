@@ -3,13 +3,13 @@ import { Menu } from "./Menu.component";
 import { Empty } from "../Shared/Empty.component";
 import { Page } from "../Shared/Page.component";
 
-export const MenuPage = ({ menuService }) => {
+export const MenuPage = ({ service }) => {
   const [pizzas, setPizzas] = useState(null);
 
   useEffect(() => {
     if (!pizzas) {
       (async () => {
-        const pizzasFromMenu = await menuService.getMenu();
+        const pizzasFromMenu = await service.getMenu();
 
         setPizzas(pizzasFromMenu);
       })();
