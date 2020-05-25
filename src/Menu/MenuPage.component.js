@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Menu } from "./Menu.component";
 import { Empty } from "../Shared/Empty.component";
+import { Page } from "../Shared/Page.component";
 
 export const MenuPage = ({ menuService }) => {
   const [pizzas, setPizzas] = useState(null);
@@ -15,5 +16,9 @@ export const MenuPage = ({ menuService }) => {
     }
   });
 
-  return pizzas ? <Menu pizzas={pizzas} /> : <Empty>Fetching Menu...</Empty>;
+  return (
+    <Page>
+      {pizzas ? <Menu pizzas={pizzas} /> : <Empty>Fetching Menu...</Empty>}
+    </Page>
+  );
 };

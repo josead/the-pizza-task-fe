@@ -1,13 +1,4 @@
-class BaseService {
-  throw(err) {
-    // TODO: Make this error show in message toast.
-    console.log(err);
-  }
-
-  fetch() {
-    return fetch(...arguments);
-  }
-}
+import { BaseService } from "../Shared/Base.service";
 
 class MenuService extends BaseService {
   async getMenu() {
