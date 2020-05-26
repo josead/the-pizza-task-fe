@@ -36,3 +36,34 @@ Here is the result:
 ![Desktop App](docs/images/pizza-task-desktop-0.1.png "Desktop App")
 
 After a little tweaking I've decided to stick to the sketchs, will add the (-) button to the side of the (Add) to remove one pizza at the time.
+
+# DAY 3/4
+
+Most of this days was implementation of the logic and some cool stuff with react Hooks.
+
+The Cart and Checkout is set on place now, components make use of the cart context using the React reducer, pretty much as the same as if it where redux, but without redux.
+
+Dediced to change "Quick Order" for "Pizzas Menu". I saw myself using the unimplemented "Quick Order" button to return home so I think it was serving other purpose, now the button takes you to the menu.
+
+There are some stuff that can improve and will soon, for example I calculate subtotalPrice and count in several places now, that needs to go DRY soon.
+I intend to add the **currency change** feature before getting into the cleaning.
+
+**Even though, in a real world app I'd add the "Cookies Acceptance" prompt**, I've made use of localStorage to save addresses.
+
+I don't have server yet so I've been using mocked services, I hope to start with BE tomorrow.
+
+### Stack
+
+React create app is ok for development, but I need to push this into production ready environment.
+
+- Docker / Docker-Compose
+
+  With Docker we will have a working testing/ build station. With Docker Compose it is easy to launch.
+
+- Nginx (Server/ Routing)
+
+  React Create App dev server lets you add in app routing and use it right away, but I'll need to add some configuration to proxy the routes into "/" so the user does get to use direct urls without making it look bad.
+
+- Nightwatch
+
+  Integration Tests running in playwright are in my opinion a good choise once you reach a stable version, you can iterate with the confort of tests that prove every feature of the app.

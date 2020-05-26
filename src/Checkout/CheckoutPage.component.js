@@ -4,17 +4,14 @@ import { Page } from "../Shared/Page.component";
 import { DeliveryForm } from "./DeliveryForm.component";
 import { Button } from "../Shared/Button.component";
 import { Link } from "react-router-dom";
+import { useLocalStorage } from "../helpers/useStorage.hook";
 
 export const CheckoutPage = ({ service }) => {
   const [formReadOnly, setformReadOnly] = useState(false);
-  const [previousAddresses, setPreviousAddresses] = useState([
-    {
-      name: "Jose Antonio Dominguez",
-      address: "9 de Julio 364",
-      location: "5B",
-      phone: "+54 2494481699",
-    },
-  ]);
+  const [previousAddresses, setPreviousAddresses] = useLocalStorage(
+    "previousAddresses",
+    []
+  );
   const [selectedPreviousAddress, setSelectedPreviousAddress] = useState(null);
   const [showForm, setShowForm] = useState(!previousAddresses.length);
 
@@ -23,6 +20,18 @@ export const CheckoutPage = ({ service }) => {
   const handlePreviousAddress = (addr) => {
     setSelectedPreviousAddress({ ...addr });
     setformReadOnly(true);
+  };
+
+  const submitOrder = async (data) => {
+    try {
+      if (data.save) {
+        setPreviousAddresses([...previousAddresses, data]);
+      }
+
+      const ticket = await service.sendOrder();
+
+      console.log(ticket);
+    } catch (e) {}
   };
 
   return (
@@ -63,7 +72,7 @@ export const CheckoutPage = ({ service }) => {
               fields={selectedPreviousAddress}
               readOnly={formReadOnly}
               formRef={formRef}
-              onSubmit={(data) => {}}
+              onSubmit={submitOrder}
             >
               <Button
                 className={`w-full ${formReadOnly || showForm ? "" : "hidden"}`}

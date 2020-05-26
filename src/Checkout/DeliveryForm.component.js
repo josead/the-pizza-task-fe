@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "../Shared/Button.component";
 
+let formData = {
+  name: "",
+  address: "",
+  location: "",
+  phone: "",
+  save: false,
+};
+
 export const DeliveryForm = ({
   fields,
   readOnly,
@@ -45,7 +53,7 @@ export const DeliveryForm = ({
       formRef.current.location.value = fields.location;
       formRef.current.phone.value = fields.phone;
     }
-  }, [fields]);
+  }, [fields, formRef]);
 
   useEffect(() => {
     return () => {
@@ -126,7 +134,6 @@ export const DeliveryForm = ({
           <div className="flex">
             <input
               className="form-input form-input__checkbox"
-              aria-required="false"
               readOnly={readOnly}
               id="save"
               type="checkbox"
