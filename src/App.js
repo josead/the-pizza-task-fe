@@ -12,26 +12,30 @@ import { PizzaCartProvider } from "./Cart/Cart.context";
 
 // import { menuService } from "./Menu/Menu.service";
 import { menuService } from "./Menu/Menu.service.mock";
+import { CurrencyProvider } from "./Currency/Currency.context";
+import { currencyService } from "./Currency/Currency.service";
 
 function App() {
   return (
     <PizzaCartProvider>
-      <Router>
-        <Nav />
-        <Switch>
-          <Route path="/checkout">
-            <CheckoutPage />
-          </Route>
-          <Route path="/cart">
-            <OrderDetail />
-            <CartPage />
-          </Route>
-          <Route path="/">
-            <OrderDetail />
-            <MenuPage service={menuService} />
-          </Route>
-        </Switch>
-      </Router>
+      <CurrencyProvider service={currencyService}>
+        <Router>
+          <Nav />
+          <Switch>
+            <Route path="/checkout">
+              <CheckoutPage />
+            </Route>
+            <Route path="/cart">
+              <OrderDetail />
+              <CartPage />
+            </Route>
+            <Route path="/">
+              <OrderDetail />
+              <MenuPage service={menuService} />
+            </Route>
+          </Switch>
+        </Router>
+      </CurrencyProvider>
     </PizzaCartProvider>
   );
 }

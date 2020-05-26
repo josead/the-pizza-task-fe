@@ -6,6 +6,7 @@ import cart from "../assets/cart.svg";
 import { Button } from "./Button.component";
 
 import { usePizzaCartProviderState } from "../Cart/Cart.context";
+import { CurrencySwitch } from "../Currency/CurrencySwitch.component";
 
 export const Nav = withRouter(({ location }) => {
   const cartState = usePizzaCartProviderState();
@@ -32,6 +33,7 @@ export const Nav = withRouter(({ location }) => {
         </Link>
         <div className="flex-grow"></div>
         <div className="flex items-center">
+          <CurrencySwitch></CurrencySwitch>
           <div className={`${location.pathname === "/" ? "hidden" : ""} `}>
             <Link to="/">
               <Button noBorder noColor className="bg-white">

@@ -45,7 +45,7 @@ export const CheckoutPage = ({ service }) => {
           <div className="pb-4">
             {previousAddresses.map((addr) => (
               <Button
-                key={addr.address}
+                key={addr.address + addr.location}
                 className="w-full whitespace-pre-wrap mb-2"
                 onClick={() => {
                   handlePreviousAddress(addr);
