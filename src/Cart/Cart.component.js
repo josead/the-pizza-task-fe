@@ -138,9 +138,11 @@ export const Cart = ({ service }) => {
             </p>
           </div>
           <div className="">
-            <Button primary className="w-full mt-2">
-              Place Order
-            </Button>
+            <Link to="/checkout">
+              <Button primary className="w-full mt-2">
+                Place Order
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -6,7 +6,7 @@ import { Cart } from "./Cart.component";
 export const CartPage = () => {
   return (
     <Page>
-      <div className="py-8">
+      <div className="py-8 pb-16">
         <Cart></Cart>
       </div>
     </Page>

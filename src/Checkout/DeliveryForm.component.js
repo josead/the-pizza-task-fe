@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../Shared/Button.component";
 
-export const DeliveryForm = ({ formRef, onSubmit }) => {
-  const [data, setData] = useState({
-    name: "",
-    address: "",
-    location: "",
-    phone: "",
-  });
+export const DeliveryForm = ({
+  fields,
+  readOnly,
+  formRef,
+  onSubmit,
+  children,
+}) => {
+  const [data, setData] = useState(formData);
 
   // const [validation, setValidation] = useState({
   //   name: null,
@@ -23,21 +24,45 @@ export const DeliveryForm = ({ formRef, onSubmit }) => {
     });
   };
 
+  const handleCheckboxToggle = () => {
+    setData({
+      ...data,
+      save: !data.save,
+    });
+  };
+
   const sendOrder = (event) => {
     event.preventDefault();
     console.log(data);
     onSubmit(data);
   };
 
+  useEffect(() => {
+    if (fields) {
+      setData(fields);
+      formRef.current.name.value = fields.name;
+      formRef.current.address.value = fields.address;
+      formRef.current.location.value = fields.location;
+      formRef.current.phone.value = fields.phone;
+    }
+  }, [fields]);
+
+  useEffect(() => {
+    return () => {
+      formData = data;
+    };
+  });
+
   return (
     <form ref={formRef} onSubmit={sendOrder}>
       <div>
         <label className="block text-gray-800" htmlFor="name">
-          Name *
+          Your Name *
         </label>
         <input
           className="form-input"
           aria-required="true"
+          readOnly={readOnly}
           required
           id="name"
           type="text"
@@ -53,9 +78,9 @@ export const DeliveryForm = ({ formRef, onSubmit }) => {
         <input
           className="form-input"
           aria-required="true"
+          readOnly={readOnly}
           required
           id="address"
-          aria-invalid="true"
           type="text"
           placeholder="Main Street 1234"
           onChange={handleInputChange}
@@ -69,9 +94,9 @@ export const DeliveryForm = ({ formRef, onSubmit }) => {
         <input
           className="form-input"
           aria-required="true"
+          readOnly={readOnly}
           required
           id="location"
-          aria-invalid="true"
           type="text"
           placeholder="1B, the black door, etc.. "
           onChange={handleInputChange}
@@ -85,16 +110,35 @@ export const DeliveryForm = ({ formRef, onSubmit }) => {
         <input
           className="form-input"
           aria-required="true"
+          readOnly={readOnly}
           required
           id="phone"
-          aria-invalid="true"
           type="text"
           pattern="^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$"
-          placeholder="00 0000 0000"
+          placeholder="123-4567, +7 555 1234567"
           onChange={handleInputChange}
           name="phone"
         ></input>
       </div>
+      <div className={`${readOnly ? "hidden" : ""}`}>
+        <label className="block text-gray-800" htmlFor="save">
+          Save Address?
+          <div className="flex">
+            <input
+              className="form-input form-input__checkbox"
+              aria-required="false"
+              readOnly={readOnly}
+              id="save"
+              type="checkbox"
+              onChange={handleCheckboxToggle}
+              name="save"
+            ></input>
+            <span className="pl-2">Yes save my address for later.</span>
+          </div>
+        </label>
+      </div>
+      <div className="py-2">{children}</div>
+
       <Button className="w-full mt-4" primary type="submit">
         Finish Order
       </Button>

@@ -19,5 +19,16 @@ code {
   margin-bottom: 0.5rem;
   border-radius: 0.2rem;
   width: 100%;
-  border: 1px solid rgb(45, 55, 72);
+  border: 1px solid #2d3748;
+}
+
+.form-input:read-only {
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #666;
+}
+
+.form-input__checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
 }
