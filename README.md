@@ -67,3 +67,9 @@ React create app is ok for development, but I need to push this into production 
 - Nightwatch
 
   Integration Tests running in playwright are in my opinion a good choise once you reach a stable version, you can iterate with the confort of tests that prove every feature of the app.
+
+# DAY 5
+
+## Starting BackEnd
+
+I've decided to give Laravel a try, I must say I've never used Laravel and it will be my 2nd time using php (Magento) and perhaps it is better that I expect.

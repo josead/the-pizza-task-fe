@@ -22,18 +22,24 @@ export const CheckoutPage = ({ service }) => {
     setformReadOnly(true);
   };
 
-  const isSavedAddress = (data) => {
-    return previousAddresses.filter(
+  const getSavedAddressIndex = (data) => {
+    const previous = previousAddresses.findIndex(
       (x) =>
         x.address.toLowerCase() === data.address.toLowerCase() &&
         x.location.toLowerCase() === data.location.toLowerCase()
-    ).length;
+    );
+    return previous >= 0 ? previous : false;
   };
 
   const submitOrder = async (data) => {
     try {
-      if (data.save && !isSavedAddress(data)) {
+      const existingIndex = getSavedAddressIndex(data);
+
+      if (data.save && existingIndex === false) {
         setPreviousAddresses([...previousAddresses, data]);
+      } else if (data.save && existingIndex !== false) {
+        previousAddresses[existingIndex] = data;
+        setPreviousAddresses([...previousAddresses]);
       }
 
       const ticket = await service.sendOrder();

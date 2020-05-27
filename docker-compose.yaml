@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  web:
+    build: ./
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - build:/app/build
+  nginx:
+    image: nginx:1.13
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    volumes:
+      - build:/www/web
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  build:

@@ -33,7 +33,6 @@ const CurrencyProvider = ({ children, service }) => {
           currency.current
         );
 
-        console.log(rates);
         // Added EUR: 1 to support current change back in Price
         dispatch({ type: "changeRates", payload: { ...rates, EUR: 1 } });
       })();
