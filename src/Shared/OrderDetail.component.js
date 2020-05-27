@@ -73,7 +73,7 @@ export const OrderDetail = () => {
             </div>
           </div>
           <div className="flex-grow"></div>
-          <div className="pr-4 text-xl text-gray-700 whitespace-no-wrap">
+          <div className="pr-4 text-xl text-gray-700 whitespace-no-wrap flex flex-col sm:block">
             <span className="text-sm md:text-base">Subtotal: </span>
             <span className="text-gray-800">
               <Price {...cartSubtotalPrice} />
