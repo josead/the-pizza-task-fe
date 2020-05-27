@@ -55,7 +55,7 @@ const MenuButton = ({ children }) => {
 };
 
 const PizzasButton = withRouter(({ location }) => (
-  <div className={`${location.pathname === "/" ? "hidden" : ""} `}>
+  <div className={`pl-2 ${location.pathname === "/" ? "hidden" : ""} `}>
     <Link to="/">
       <Button noBorder noColor className="bg-white">
         Pizzas Menu

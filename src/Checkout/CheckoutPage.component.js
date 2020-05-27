@@ -22,9 +22,17 @@ export const CheckoutPage = ({ service }) => {
     setformReadOnly(true);
   };
 
+  const isSavedAddress = (data) => {
+    return previousAddresses.filter(
+      (x) =>
+        x.address.toLowerCase() === data.address.toLowerCase() &&
+        x.location.toLowerCase() === data.location.toLowerCase()
+    ).length;
+  };
+
   const submitOrder = async (data) => {
     try {
-      if (data.save) {
+      if (data.save && !isSavedAddress(data)) {
         setPreviousAddresses([...previousAddresses, data]);
       }
 
@@ -66,14 +74,12 @@ export const CheckoutPage = ({ service }) => {
               New Address
             </Button>
           </div>
+          <Prompt
+            when={showForm || formReadOnly}
+            message={"If you continue the progress in checkout will be lost."}
+          />
           <div className={`${showForm || formReadOnly ? "block" : "hidden"}`}>
             <p className="py-2 font-bold">Address Fields</p>
-            <Prompt
-              when={showForm && !formReadOnly}
-              message={
-                "You have unsaved Address Fields. If you continue they will be lost."
-              }
-            />
             <DeliveryForm
               fields={selectedPreviousAddress}
               readOnly={formReadOnly}
