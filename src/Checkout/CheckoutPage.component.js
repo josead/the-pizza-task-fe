@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import { Page } from "../Shared/Page.component";
 import { DeliveryForm } from "./DeliveryForm.component";
 import { Button } from "../Shared/Button.component";
-import { Link } from "react-router-dom";
+import { Link, Prompt } from "react-router-dom";
 import { useLocalStorage } from "../helpers/useStorage.hook";
 
 export const CheckoutPage = ({ service }) => {
@@ -68,6 +68,12 @@ export const CheckoutPage = ({ service }) => {
           </div>
           <div className={`${showForm || formReadOnly ? "block" : "hidden"}`}>
             <p className="py-2 font-bold">Address Fields</p>
+            <Prompt
+              when={showForm && !formReadOnly}
+              message={
+                "You have unsaved Address Fields. If you continue they will be lost."
+              }
+            />
             <DeliveryForm
               fields={selectedPreviousAddress}
               readOnly={formReadOnly}
