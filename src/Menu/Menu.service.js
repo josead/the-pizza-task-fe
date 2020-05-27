@@ -3,7 +3,9 @@ import { BaseService } from "../Shared/Base.service";
 class MenuService extends BaseService {
   async getMenu() {
     try {
-      const menu = await this.fetch("/api/menu");
+      const response = await this.fetch("/api/menu");
+
+      const menu = await response.json();
 
       return menu;
     } catch (e) {

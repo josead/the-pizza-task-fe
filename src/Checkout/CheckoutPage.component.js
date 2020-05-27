@@ -76,7 +76,8 @@ export const CheckoutPage = ({ service }) => {
             >
               <Button
                 className={`w-full ${formReadOnly || showForm ? "" : "hidden"}`}
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
                   setShowForm(true);
                   setformReadOnly(false);
                   setTimeout(() => {

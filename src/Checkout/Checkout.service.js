@@ -1,18 +1,7 @@
 import { BaseService } from "../Shared/Base.service";
 
-class CartService extends BaseService {
-  async getDeliveryFee() {
-    try {
-      const menu = await this.fetch("/api/delivery-fee");
-
-      return menu;
-    } catch (e) {
-      this.throw(e);
-    }
-  }
-  async sendOrder({ form }) {
-    // TODO:
-  }
+class CheckuotService extends BaseService {
+  async sendOrder({ form }) {}
 }
 
-export const cartService = new CartService();
+export const checkoutService = new CheckuotService();

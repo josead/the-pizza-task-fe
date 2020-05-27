@@ -57,7 +57,7 @@ const CartItem = ({ price, count, id, name, desc, dispatch }) => {
   );
 };
 
-export const Cart = ({ service }) => {
+export const Cart = ({ deliveryFee }) => {
   const cartState = usePizzaCartProviderState();
   const dispatch = usePizzaCartProviderDispatch();
 
@@ -127,14 +127,25 @@ export const Cart = ({ service }) => {
               <span>subtotal ({itemsCount})</span>
               <Price {...subtotalPrice}></Price>
             </p>
-            <p className="flex pt-2 justify-between font-bold w-full">
-              <span>shipping</span>
-              <Price {...subtotalPrice}></Price>
-            </p>
+            {deliveryFee ? (
+              <p className="flex pt-2 justify-between font-bold w-full">
+                <span>shipping</span>
+                <Price {...deliveryFee}></Price>
+              </p>
+            ) : (
+              "calculating"
+            )}
             <p className="w-full my-4 border-b-1 border border-solid border-gray-300"></p>
             <p className="flex pt-2 justify-between font-bold w-full">
               <span>estimated total</span>
-              <Price {...subtotalPrice}></Price>
+              {deliveryFee ? (
+                <Price
+                  value={deliveryFee.value + subtotalPrice.value}
+                  currency={subtotalPrice.currency}
+                ></Price>
+              ) : (
+                "calculating"
+              )}
             </p>
           </div>
           <div className="">
