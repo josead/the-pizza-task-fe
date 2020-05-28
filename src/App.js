@@ -10,7 +10,7 @@ import { CheckoutPage } from "./Checkout/CheckoutPage.component";
 
 import { PizzaCartProvider } from "./Cart/Cart.context";
 
-import { cartService } from "./Menu/Cart.service";
+import { cartService } from "./Cart/Cart.service";
 import { menuService } from "./Menu/Menu.service";
 
 import { CurrencyProvider } from "./Currency/Currency.context";

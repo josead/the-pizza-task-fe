@@ -3,10 +3,6 @@ version: "3"
 services:
   web:
     build: ./
-    expose:
-      - 3000
-    ports:
-      - 3000:3000
     volumes:
       - build:/app/build
   nginx:
