@@ -12,8 +12,13 @@ services:
     depends_on:
       - web
     volumes:
-      - build:/www/web
+      - ./dist:/www/web
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
 
 volumes:
   build:
+
+networks:
+  default:
+    external:
+      name: the-pizza-task-be_nginx_network

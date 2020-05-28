@@ -32,3 +32,19 @@ code {
   width: 1.5rem;
   height: 1.5rem;
 }
+
+.pizza-card__image {
+  transition: width 150ms ease-out;
+}
+
+.pizza-card__title {
+  transition: font-weight 100ms ease;
+}
+
+.pizza-card:hover .pizza-card__image {
+  width: 9rem;
+}
+
+.pizza-card:hover .pizza-card__title {
+  font-weight: 400;
+}

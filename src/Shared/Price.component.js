@@ -1,5 +1,6 @@
 import React from "react";
 import { useCurrencyProviderState } from "../Currency/Currency.context";
+import { LoadingText } from "./LoadingText.component.";
 
 const currencies = {
   EUR: "€",
@@ -12,7 +13,7 @@ const currencies = {
 export const Price = ({ value, currency }) => {
   const currencyState = useCurrencyProviderState();
 
-  if (!currency || !value) return <span>€ ?</span>;
+  if (!currency || !value) return <LoadingText size={2}></LoadingText>;
 
   // if (currencyState.loading) return <span>loading</span>;
 

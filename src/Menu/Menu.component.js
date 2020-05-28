@@ -1,18 +1,16 @@
 import React from "react";
+import { Empty } from "../Shared/Empty.component";
 import { Pizza } from "./Pizza/Pizza.component";
-import { usePizzaCartProviderState } from "../Cart/Cart.context";
 
 export const Menu = ({ pizzas }) => {
-  const cartState = usePizzaCartProviderState();
+  if (!pizzas) return <Empty>Something wrong happend! Try again.</Empty>;
+
+  if (!pizzas.length) return <Empty>There are no items in this menu.</Empty>;
 
   return (
     <section className="pb-16">
       {pizzas.map((p) => (
-        <Pizza
-          pizza={p}
-          key={p.id}
-          countCart={cartState[p.id] && cartState[p.id].count}
-        />
+        <Pizza pizza={p} key={p.id} />
       ))}
     </section>
   );

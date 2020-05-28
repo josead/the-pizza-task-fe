@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button } from "../../Shared/Button.component";
 import { Price } from "../../Shared/Price.component";
-import { usePizzaCartProviderDispatch } from "../../Cart/Cart.context";
+import {
+  usePizzaCartProviderDispatch,
+  usePizzaCartProviderState,
+} from "../../Cart/Cart.context";
+import { LoadingText } from "../../Shared/LoadingText.component.";
 
-export const Pizza = ({ pizza, countCart }) => {
+export const Pizza = ({ pizza }) => {
   const dispatch = usePizzaCartProviderDispatch();
+  const cartState = usePizzaCartProviderState();
+
+  const countFromCart = cartState[pizza.id] ? cartState[pizza.id].count : 0;
+
+  const [cartCount, setCartCount] = useState(countFromCart);
+
+  useEffect(() => {
+    const count = cartState[pizza.id] ? cartState[pizza.id].count : 0;
+    setCartCount(count);
+  }, [cartState[pizza.id], pizza.id]);
 
   if (!pizza) throw Error("Pizza needs pizza prop.");
+
+  if (!pizza.name) {
+    pizza = {
+      name: <LoadingText size="sm"></LoadingText>,
+      desc: <LoadingText size="lg"></LoadingText>,
+    };
+  }
+
   return (
     <div className="pizza-card flex py-6">
-      <div className="rounded-full flex-initial bg-orange-300 w-32 h-32 mr-8 "></div>
+      <div className="pizza-card__image rounded-full flex-initial w-32 h-32 mr-8 ">
+        <img alt="Tasty Pizza From the Top" src={pizza.image_url} />
+      </div>
       <div className="items-center flex flex-1">
         <div>
-          <p className="text-xl font-light">{pizza.name}</p>
+          <p className="pizza-card__title text-xl font-light capitalize">
+            {pizza.name}
+          </p>
           <p className="text-2xl font-light">
             <Price {...pizza.price} />
           </p>
@@ -22,7 +48,7 @@ export const Pizza = ({ pizza, countCart }) => {
       </div>
       <div className="flex-1 flex items-center">
         <div className="flex-grow"></div>
-        <div className={`${countCart >= 1 ? "block" : "hidden"}`}>
+        <div className={`${cartCount >= 1 ? "block" : "hidden"}`}>
           <Button
             onClick={dispatch.bind(null, {
               type: "removeOnePizza",
@@ -33,7 +59,7 @@ export const Pizza = ({ pizza, countCart }) => {
             -
           </Button>
           <div className="whitespace-no-wrap p-2 px-4 rounded-md inline">
-            {countCart}
+            {cartCount}
           </div>
         </div>
         <div className="">
@@ -46,7 +72,7 @@ export const Pizza = ({ pizza, countCart }) => {
                 payload: pizza,
               })}
             >
-              Add
+              Add To Cart
             </Button>
           </div>
         </div>
