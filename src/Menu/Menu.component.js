@@ -4,6 +4,7 @@ import TouchCarousel from "react-touch-carousel";
 import { Empty } from "../Shared/Empty.component";
 import { Pizza, PizzaImage } from "./Pizza/Pizza.component";
 import NonPassiveTouchTarget from "../helpers/NonPasiveTouchTarget";
+import TouchWithMouse from "../helpers/TouchWithMouse.hoc";
 
 import "./carousell.css";
 import { Page } from "../Shared/Page.component";
@@ -92,6 +93,8 @@ export const Menu = ({ pizzas }) => {
     );
   }
 
+  const Container = TouchWithMouse(CarouselContainer);
+
   return (
     <>
       <section className="pb-16 hidden sm:block">
@@ -103,7 +106,7 @@ export const Menu = ({ pizzas }) => {
       </section>
       <section className="pb-16 flex sm:hidden select-none pt-24">
         <TouchCarousel
-          component={CarouselContainer}
+          component={Container}
           cardSize={cardSize}
           cardCount={pizzas.length}
           autoplay={autoplay}
