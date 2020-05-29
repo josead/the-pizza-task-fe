@@ -18,6 +18,8 @@ import { checkoutService } from "./Checkout/Checkout.service";
 import { menuService } from "./Menu/Menu.service";
 
 function App() {
+  document.querySelector(".loading-splash").remove();
+
   return (
     <PizzaCartProvider>
       <CurrencyProvider service={currencyService}>
