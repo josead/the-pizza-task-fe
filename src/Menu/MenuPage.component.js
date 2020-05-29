@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Menu } from "./Menu.component";
 import { Empty } from "../Shared/Empty.component";
 import { Page } from "../Shared/Page.component";
@@ -8,11 +8,9 @@ export const MenuPage = ({ service }) => {
   const [pizzas, setPizzas] = useSessionStorage("menu", null);
 
   useEffect(() => {
-    if (!pizzas) {
+    if (!pizzas || pizzas.length === 0) {
       (async () => {
         const pizzasFromMenu = await service.getMenu();
-
-        console.log(pizzasFromMenu);
 
         setPizzas(pizzasFromMenu);
       })();

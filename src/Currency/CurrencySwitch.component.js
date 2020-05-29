@@ -13,19 +13,21 @@ export const CurrencySwitch = () => {
   return (
     <div>
       {available && !loading
-        ? available.map((x, i) => (
-            <Button
-              key={i}
-              noBorder={current === x}
-              noColor={current === x}
-              onClick={() => {
-                if (x === current) return;
-                dispatch({ type: "changeCurrentCurrency", payload: x });
-              }}
-            >
-              {x}
-            </Button>
-          ))
+        ? available.map((x, i) =>
+            current === x ? (
+              <span className="p-4">{x}</span>
+            ) : (
+              <Button
+                key={i}
+                onClick={() => {
+                  if (x === current) return;
+                  dispatch({ type: "changeCurrentCurrency", payload: x });
+                }}
+              >
+                {x}
+              </Button>
+            )
+          )
         : ""}
       {loading ? "loading" : ""}
     </div>

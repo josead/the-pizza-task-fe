@@ -9,12 +9,12 @@ import { CartPage } from "./Cart/CartPage.component";
 import { CheckoutPage } from "./Checkout/CheckoutPage.component";
 
 import { PizzaCartProvider } from "./Cart/Cart.context";
+import { CurrencyProvider } from "./Currency/Currency.context";
 
 import { cartService } from "./Cart/Cart.service";
-import { menuService } from "./Menu/Menu.service";
-
-import { CurrencyProvider } from "./Currency/Currency.context";
 import { currencyService } from "./Currency/Currency.service";
+import { menuService } from "./Menu/Menu.service";
+import { OrderSuccess } from "./Checkout/OrderSuccess.component";
 
 function App() {
   return (
@@ -23,6 +23,9 @@ function App() {
         <Router>
           <Nav />
           <Switch>
+            <Route path="/checkout/success">
+              <OrderSuccess />
+            </Route>
             <Route path="/checkout">
               <CheckoutPage />
             </Route>

@@ -19,7 +19,7 @@ export const Pizza = ({ pizza }) => {
   useEffect(() => {
     const count = cartState[pizza.id] ? cartState[pizza.id].count : 0;
     setCartCount(count);
-  }, [cartState[pizza.id], pizza.id]);
+  }, [cartState, pizza.id]);
 
   if (!pizza) throw Error("Pizza needs pizza prop.");
 

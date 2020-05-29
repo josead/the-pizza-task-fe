@@ -1,6 +1,6 @@
 class CartServiceMock {
   async sendOrder() {
-    return true;
+    return "Number43242";
   }
 }
 

@@ -41,7 +41,6 @@ export const DeliveryForm = ({
 
   const sendOrder = (event) => {
     event.preventDefault();
-    console.log(data);
     onSubmit(data);
   };
 

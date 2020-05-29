@@ -1,12 +1,19 @@
 import React, { useState, useRef } from "react";
+import { Link, Prompt, useHistory } from "react-router-dom";
 
 import { Page } from "../Shared/Page.component";
 import { DeliveryForm } from "./DeliveryForm.component";
 import { Button } from "../Shared/Button.component";
-import { Link, Prompt } from "react-router-dom";
 import { useLocalStorage } from "../helpers/useStorage.hook";
+import {
+  usePizzaCartProviderState,
+  usePizzaCartProviderDispatch,
+} from "../Cart/Cart.context";
 
 export const CheckoutPage = ({ service }) => {
+  const history = useHistory();
+  const cartState = usePizzaCartProviderState();
+  const cartDispatch = usePizzaCartProviderDispatch();
   const [formReadOnly, setformReadOnly] = useState(false);
   const [previousAddresses, setPreviousAddresses] = useLocalStorage(
     "previousAddresses",
@@ -42,9 +49,23 @@ export const CheckoutPage = ({ service }) => {
         setPreviousAddresses([...previousAddresses]);
       }
 
-      const ticket = await service.sendOrder();
+      const ticket = await service.sendOrder({
+        addressData: data,
+        cartData: cartState,
+      });
 
+      // TODO: Save ticket
       console.log(ticket);
+
+      history.push({
+        pathName: "/checkout/success",
+        search: `?ticket=${ticket}`,
+        state: { ticket },
+      });
+
+      cartDispatch({
+        type: "resetCart",
+      });
     } catch (e) {}
   };
 
