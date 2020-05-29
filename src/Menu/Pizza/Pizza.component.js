@@ -8,7 +8,17 @@ import {
 } from "../../Cart/Cart.context";
 import { LoadingText } from "../../Shared/LoadingText.component.";
 
-export const Pizza = ({ pizza }) => {
+const PizzaImage = ({ src, className }) => {
+  return (
+    <div
+      className={`pizza-card__image rounded-full flex-initial sm:w-32 sm:h-32 sm:mr-8`}
+    >
+      <img alt="Tasty Pizza From the Top" src={src} className={className} />
+    </div>
+  );
+};
+
+const Pizza = ({ pizza }) => {
   const dispatch = usePizzaCartProviderDispatch();
   const cartState = usePizzaCartProviderState();
 
@@ -31,13 +41,13 @@ export const Pizza = ({ pizza }) => {
   }
 
   return (
-    <div className="pizza-card flex py-6">
-      <div className="pizza-card__image rounded-full flex-initial w-32 h-32 mr-8 ">
-        <img alt="Tasty Pizza From the Top" src={pizza.image_url} />
+    <div className="pizza-card flex py-6 items-center sm:flex-row text-center sm:text-left flex-col-reverse">
+      <div className="hidden sm:flex">
+        <PizzaImage src={pizza.image_url}></PizzaImage>
       </div>
       <div className="items-center flex flex-1">
         <div>
-          <p className="pizza-card__title text-xl font-light capitalize">
+          <p className="pizza-card__title pt-4 sm:pt-0 sm:text-xl font-light capitalize text-2xl">
             {pizza.name}
           </p>
           <p className="text-2xl font-light">
@@ -80,3 +90,5 @@ export const Pizza = ({ pizza }) => {
     </div>
   );
 };
+
+export { Pizza, PizzaImage };

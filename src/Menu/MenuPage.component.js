@@ -26,7 +26,7 @@ export const MenuPage = ({ service }) => {
   }
 
   return (
-    <Page>
+    <>
       {pizzas && pizzas.length > 0 ? (
         <Menu pizzas={pizzas} />
       ) : (
@@ -35,6 +35,6 @@ export const MenuPage = ({ service }) => {
           the moment.
         </Empty>
       )}
-    </Page>
+    </>
   );
 };

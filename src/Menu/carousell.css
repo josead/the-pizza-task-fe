@@ -1,0 +1,30 @@
+.carousel-container {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+}
+
+.carousel-card {
+  flex: 0 0 300px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-card-inner {
+  position: relative;
+  flex-direction: column;
+  width: 290px;
+  border-radius: 5px;
+}

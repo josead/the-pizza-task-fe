@@ -41,9 +41,9 @@ code {
   transition: font-weight 100ms ease;
 }
 
-.pizza-card:hover .pizza-card__image {
+/* .pizza-card:hover .pizza-card__image {
   width: 9rem;
-}
+} */
 
 .pizza-card:hover .pizza-card__title {
   font-weight: 400;

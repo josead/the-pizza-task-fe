@@ -37,7 +37,7 @@ export const OrderDetail = () => {
   }, [cartState]);
 
   return (
-    <div className="h-16 w-full fixed bottom-0 md:top-0">
+    <div className="h-16 w-full fixed bottom-0 md:top-0 z-10">
       <div
         className={`bg-white flex flex-col transform w-screen overflow-x-hidden
       ${

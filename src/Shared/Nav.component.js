@@ -79,7 +79,7 @@ export const Nav = () => {
   }, [cartState]);
 
   return (
-    <div className="z-10 bg-white w-full h-16 shadow-xs fixed w-screen overflow-x-hidden">
+    <div className="z-20 bg-white w-full h-16 shadow-xs fixed w-screen overflow-x-hidden">
       <div className="flex text-gray-700 w-full h-full max-w-screen-xl m-auto">
         <Link to="/" className="h-full flex flex-2 items-center sm:pr-4">
           <div className="h-full">
