@@ -7,6 +7,7 @@ import {
   usePizzaCartProviderDispatch,
 } from "./Cart.context";
 import { Link } from "react-router-dom";
+import { OrderSummary } from "./OrderSummary.component";
 
 const CartItem = ({ price, count, id, name, desc, dispatch }) => {
   return (
@@ -115,39 +116,11 @@ export const Cart = ({ deliveryFee }) => {
           })}
         </div>
         <div className="lg:pl-4 flex-auto w-full lg:w-64">
-          <div className="flex flex-grow mt-8 lg:mt-4">
-            <div className="mb-2 w-full ">
-              <h3 className="font-bold text-base whitespace-no-wrap lg:text-center">
-                ORDER SUMMARY
-              </h3>
-            </div>
-          </div>
-          <div className="p-2 px-4 border-solid border-2 border-gray-700">
-            <p className="flex justify-between font-bold w-full">
-              <span>subtotal ({itemsCount})</span>
-              <Price {...subtotalPrice}></Price>
-            </p>
-            {deliveryFee ? (
-              <p className="flex pt-2 justify-between font-bold w-full">
-                <span>shipping</span>
-                <Price {...deliveryFee}></Price>
-              </p>
-            ) : (
-              "calculating"
-            )}
-            <p className="w-full my-4 border-b-1 border border-solid border-gray-300"></p>
-            <p className="flex pt-2 justify-between font-bold w-full">
-              <span>estimated total</span>
-              {deliveryFee ? (
-                <Price
-                  value={deliveryFee.value + subtotalPrice.value}
-                  currency={subtotalPrice.currency}
-                ></Price>
-              ) : (
-                "calculating"
-              )}
-            </p>
-          </div>
+          <OrderSummary
+            itemsCount={itemsCount}
+            subtotalPrice={subtotalPrice}
+            deliveryFee={deliveryFee}
+          />
           <div className="">
             <Link to="/checkout">
               <Button primary className="w-full mt-2">

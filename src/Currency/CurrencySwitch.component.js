@@ -15,7 +15,9 @@ export const CurrencySwitch = () => {
       {available && !loading
         ? available.map((x, i) =>
             current === x ? (
-              <span className="p-4">{x}</span>
+              <span key={i} className="p-4">
+                {x}
+              </span>
             ) : (
               <Button
                 key={i}

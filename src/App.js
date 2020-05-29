@@ -7,14 +7,15 @@ import { OrderDetail } from "./Shared/OrderDetail.component";
 import { MenuPage } from "./Menu/MenuPage.component";
 import { CartPage } from "./Cart/CartPage.component";
 import { CheckoutPage } from "./Checkout/CheckoutPage.component";
+import { OrderSuccess } from "./Checkout/OrderSuccess.component";
 
 import { PizzaCartProvider } from "./Cart/Cart.context";
 import { CurrencyProvider } from "./Currency/Currency.context";
 
 import { cartService } from "./Cart/Cart.service";
 import { currencyService } from "./Currency/Currency.service";
+import { checkoutService } from "./Checkout/Checkout.service";
 import { menuService } from "./Menu/Menu.service";
-import { OrderSuccess } from "./Checkout/OrderSuccess.component";
 
 function App() {
   return (
@@ -23,11 +24,11 @@ function App() {
         <Router>
           <Nav />
           <Switch>
+            <Route path="/checkout">
+              <CheckoutPage service={checkoutService} />
+            </Route>
             <Route path="/checkout/success">
               <OrderSuccess />
-            </Route>
-            <Route path="/checkout">
-              <CheckoutPage />
             </Route>
             <Route path="/cart">
               <OrderDetail />

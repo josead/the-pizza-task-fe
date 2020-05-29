@@ -8,10 +8,13 @@ export const Menu = ({ pizzas }) => {
   if (!pizzas.length) return <Empty>There are no items in this menu.</Empty>;
 
   return (
-    <section className="pb-16">
-      {pizzas.map((p) => (
-        <Pizza pizza={p} key={p.id} />
-      ))}
-    </section>
+    <>
+      <section className="pb-16">
+        {pizzas.map((p) => (
+          <Pizza pizza={p} key={p.id} />
+        ))}
+      </section>
+      <section className="flex sm:hidden">MOBILE</section>
+    </>
   );
 };

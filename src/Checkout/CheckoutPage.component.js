@@ -56,6 +56,7 @@ export const CheckoutPage = ({ service }) => {
 
       // TODO: Save ticket
       console.log(ticket);
+      setShowForm(false);
 
       history.push({
         pathName: "/checkout/success",
