@@ -1,19 +1,25 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Page } from "../Shared/Page.component";
 
 export const OrderSuccess = () => {
   const location = useLocation();
+  const history = useHistory();
 
-  return (
-    <Page>
-      <div className="inset-0 relative flex items-center justify-center">
-        <div className="p-6 shadow-xs">
-          {location.search
-            ? `We will send you our Pizza! ticket number: ${location.search.ticket}!`
-            : "ticket number invalid"}
+  if (location.state) {
+    return (
+      <Page>
+        <div className="inset-0 relative flex items-center justify-center">
+          <div className="p-6 shadow-xs">
+            {location.search
+              ? `We will send you our Pizza! ticket number: ${location.state.ticket}!`
+              : "ticket number invalid"}
+          </div>
         </div>
-      </div>
-    </Page>
-  );
+      </Page>
+    );
+  } else {
+    history.push("/");
+    return "";
+  }
 };

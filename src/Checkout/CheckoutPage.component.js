@@ -56,16 +56,14 @@ export const CheckoutPage = ({ service }) => {
 
       // TODO: Save ticket
       setShowForm(false);
-
-      history.push({
-        pathName: "/checkout/success",
-        search: `?ticket=${ticket}`,
-        state: { ticket },
-      });
+      setSelectedPreviousAddress(null);
+      setformReadOnly(false);
 
       cartDispatch({
         type: "resetCart",
       });
+
+      history.push(`/order-success?ticket=${ticket}`, { ticket });
     } catch (e) {}
   };
 
