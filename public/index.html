@@ -47,6 +47,32 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <style>
+      @keyframes loading-splash {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.1);
+        }
+      }
+      .loading-splash {
+        width: 100%;
+        text-align: center;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        display: flex;
+        position: fixed;
+        right: 0;
+        justify-content: center;
+        align-items: center;
+        transform: scale(1);
+        animation: loading-splash 500ms ease-in infinite alternate;
+        font-size: 10vw;
+      }
+    </style>
+    <div class="loading-splash">🍕🍕🍕🍕🍕</div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
