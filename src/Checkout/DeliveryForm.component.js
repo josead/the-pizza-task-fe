@@ -15,6 +15,7 @@ export const DeliveryForm = ({
   formRef,
   onSubmit,
   children,
+  disabled,
 }) => {
   const [data, setData] = useState(formData);
 
@@ -145,7 +146,7 @@ export const DeliveryForm = ({
       </div>
       <div className="py-2">{children}</div>
 
-      <Button className="w-full mt-4" primary type="submit">
+      <Button className="w-full mt-4" primary type="submit" disabled={disabled}>
         Finish Order
       </Button>
     </form>

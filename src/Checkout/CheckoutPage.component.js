@@ -13,6 +13,7 @@ import {
 export const CheckoutPage = ({ service }) => {
   const history = useHistory();
   const cartState = usePizzaCartProviderState();
+  const [loading, setLoading] = useState(false);
   const cartDispatch = usePizzaCartProviderDispatch();
   const [formReadOnly, setformReadOnly] = useState(false);
   const [previousAddresses, setPreviousAddresses] = useLocalStorage(
@@ -42,6 +43,8 @@ export const CheckoutPage = ({ service }) => {
     try {
       const existingIndex = getSavedAddressIndex(data);
 
+      setLoading(true);
+
       if (data.save && existingIndex === false) {
         setPreviousAddresses([...previousAddresses, data]);
       } else if (data.save && existingIndex !== false) {
@@ -55,6 +58,7 @@ export const CheckoutPage = ({ service }) => {
       });
 
       // TODO: Save ticket
+      setLoading(false);
       setShowForm(false);
       setSelectedPreviousAddress(null);
       setformReadOnly(false);
@@ -78,6 +82,7 @@ export const CheckoutPage = ({ service }) => {
           <div className="pb-4">
             {previousAddresses.map((addr) => (
               <Button
+                disabled={loading}
                 key={addr.address + addr.location}
                 className="w-full whitespace-pre-wrap mb-2"
                 onClick={() => {
@@ -88,6 +93,7 @@ export const CheckoutPage = ({ service }) => {
               </Button>
             ))}
             <Button
+              disabled={loading}
               className={`w-full ${formReadOnly || showForm ? "hidden" : ""}`}
               onClick={() => {
                 setShowForm(true);
@@ -109,9 +115,11 @@ export const CheckoutPage = ({ service }) => {
               fields={selectedPreviousAddress}
               readOnly={formReadOnly}
               formRef={formRef}
+              disabled={loading}
               onSubmit={submitOrder}
             >
               <Button
+                disabled={loading}
                 className={`w-full ${formReadOnly || showForm ? "" : "hidden"}`}
                 onClick={(event) => {
                   event.preventDefault();
@@ -127,7 +135,9 @@ export const CheckoutPage = ({ service }) => {
             </DeliveryForm>
           </div>
           <Link to="/">
-            <Button className="w-full mt-4">Change Pizzas</Button>
+            <Button disabled={loading} className="w-full mt-4">
+              Change Pizzas
+            </Button>
           </Link>
         </div>
       </div>
