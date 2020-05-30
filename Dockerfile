@@ -7,7 +7,7 @@ WORKDIR /app
 COPY ./ .
 
 #Installing all dependencies.
-RUN npm install
+RUN npm install --only=prod
 
 # RUN npm build
 RUN npm run build
