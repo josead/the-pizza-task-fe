@@ -10,7 +10,7 @@ export const OrderSuccess = () => {
     return (
       <Page>
         <div className="inset-0 relative flex items-center justify-center">
-          <div className="p-6 shadow-xs">
+          <div className="p-6 shadow-xs" id="order-success-message">
             {location.search
               ? `We will send you our Pizza! ticket number: ${location.state.ticket}!`
               : "ticket number invalid"}

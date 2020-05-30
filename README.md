@@ -64,7 +64,7 @@ React create app is ok for development, but I need to push this into production 
 
   React Create App dev server lets you add in app routing and use it right away, but I'll need to add some configuration to proxy the routes into "/" so the user does get to use direct urls without making it look bad.
 
-- Nightwatch
+- Playwright
 
   Integration Tests running in playwright are in my opinion a good choise once you reach a stable version, you can iterate with the confort of tests that prove every feature of the app.
 
