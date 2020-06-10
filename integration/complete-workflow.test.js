@@ -2,7 +2,7 @@ const { chromium } = require("playwright");
 
 let url = "http://localhost";
 if (process.env.NODE_ENV === "production") {
-  url = "http://ec2-100-26-136-219.compute-1.amazonaws.com";
+  url = "http://ec2-52-206-235-144.compute-1.amazonaws.com/";
 }
 
 (async () => {
